@@ -39,6 +39,7 @@
     <Compile Include="manage.py" />
     <Compile Include="organizer\admin.py" />
     <Compile Include="organizer\apps.py" />
+    <Compile Include="organizer\migrations\0001_initial.py" />
     <Compile Include="organizer\migrations\__init__.py" />
     <Compile Include="organizer\models.py" />
     <Compile Include="organizer\tests.py" />
