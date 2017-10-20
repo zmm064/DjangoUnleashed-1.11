@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+            Startup Organizer
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <div>
+        <header>
+            <h1>Startup Organizer</h1>
+        </header>
+        <main>
+            {% block content %}
+                This is default content!
+            {% endblock %}
+        </main>
+    </div>
+    <footer>
+        <p>
+            &copy;2015 <a href="">Andrew Pinkham</a>
+        </p>
+        <p>
+            Created for <a href="">Django Unleashed</a>
+        </p>
+    </footer>
+</body>
+</html>

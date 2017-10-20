@@ -51,17 +51,27 @@
     <Compile Include="suorganizer\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="blog\templates\index.html" />
-    <Content Include="organizer\templates\index.html" />
+    <Content Include="blog\templates\blog\base_blog.html" />
+    <Content Include="organizer\templates\organizer\base_organizer.html" />
+    <Content Include="blog\templates\blog\post_detail.html" />
+    <Content Include="blog\templates\blog\post_list.html" />
+    <Content Include="organizer\templates\organizer\startup_detail.html" />
+    <Content Include="organizer\templates\organizer\startup_list.html" />
+    <Content Include="organizer\templates\organizer\tag_detail.html" />
+    <Content Include="organizer\templates\organizer\tag_list.html" />
     <Content Include="requirements.txt" />
+    <Content Include="templates\base.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="blog\" />
     <Folder Include="blog\migrations\" />
     <Folder Include="blog\templates\" />
+    <Folder Include="blog\templates\blog\" />
+    <Folder Include="templates\" />
     <Folder Include="organizer\" />
     <Folder Include="organizer\migrations\" />
     <Folder Include="organizer\templates\" />
+    <Folder Include="organizer\templates\organizer\" />
     <Folder Include="suorganizer\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
