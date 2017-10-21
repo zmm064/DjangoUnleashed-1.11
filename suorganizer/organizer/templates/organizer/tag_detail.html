@@ -8,7 +8,7 @@
     <h2>{{ tag.name|title }}</h2>
     {% if tag.startup_set.all %}
         <section>
-            {#列出所有的Startups#}
+            {#鍒楀嚭鎵�鏈夌殑Startups#}
             <h3>Startup{{ tag.startup_set.count|pluralize }}</h3>
             <p>
                 Tag is associated with {{ tag.startup_set.count }} 
@@ -16,18 +16,18 @@
             </p>
             <ul>
                 {% for startup in tag.startup_set.all %}
-                    <li><a href="">{{ startup.name }}</a></li>
+                    <li><a href="{{ startup.get_absolute_url }}">{{ startup.name }}</a></li>
                 {% endfor %}
             </ul>
         </section>
     {% endif %}
     {% if tag.blog_posts.all %}
         <section>
-            {#列出所有的Blog Posts#}
+            {#鍒楀嚭鎵�鏈夌殑Blog Posts#}
             <h3>Blog Post{{ tag.blog_posts.count|pluralize }}</h3>
             <ul>
                 {% for post in tag.blog_posts.all %}
-                    <li><a href="">{ post.title|title }</a></li>
+                    <li><a href="{{post.get_absolute_url}}">{{ post.title|title }}</a></li>
                 {% endfor %}
             </ul>
         </section>
