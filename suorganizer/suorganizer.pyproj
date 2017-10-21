@@ -34,6 +34,9 @@
     <Compile Include="blog\migrations\__init__.py" />
     <Compile Include="blog\models.py" />
     <Compile Include="blog\tests.py" />
+    <Compile Include="blog\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="blog\views.py" />
     <Compile Include="blog\__init__.py" />
     <Compile Include="manage.py" />
@@ -43,8 +46,14 @@
     <Compile Include="organizer\migrations\__init__.py" />
     <Compile Include="organizer\models.py" />
     <Compile Include="organizer\tests.py" />
+    <Compile Include="organizer\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="organizer\views.py" />
     <Compile Include="organizer\__init__.py" />
+    <Compile Include="suorganizer\views.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="suorganizer\__init__.py" />
     <Compile Include="suorganizer\settings.py" />
     <Compile Include="suorganizer\urls.py" />

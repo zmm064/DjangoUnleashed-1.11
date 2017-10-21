@@ -3,10 +3,10 @@ Definition of urls for suorganizer.
 """
 
 from django.conf.urls import include, url
-
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
+from django.contrib import admin
+from .views import redirect_root
 # admin.autodiscover()
+
 
 urlpatterns = [
     # Examples:
@@ -17,5 +17,8 @@ urlpatterns = [
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', redirect_root),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'blog/', include('blog.urls', namespace='blog', app_name='blog')),
+    url(r'^', include('organizer.urls', namespace='organizer', app_name='organizer')),
 ]
