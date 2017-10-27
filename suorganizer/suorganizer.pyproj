@@ -53,6 +53,9 @@
     <Compile Include="organizer\urls.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="organizer\utils.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="organizer\views.py" />
     <Compile Include="organizer\__init__.py" />
     <Compile Include="suorganizer\views.py">
@@ -65,12 +68,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="blog\templates\blog\base_blog.html" />
+    <Content Include="blog\templates\blog\post_form_update.html" />
+    <Content Include="blog\templates\blog\post_form_delete.html" />
+    <Content Include="blog\templates\blog\post_form_create.html" />
     <Content Include="organizer\templates\organizer\base_organizer.html" />
     <Content Include="blog\templates\blog\post_detail.html" />
     <Content Include="blog\templates\blog\post_list.html" />
+    <Content Include="organizer\templates\organizer\newslink_form_delete.html" />
+    <Content Include="organizer\templates\organizer\newslink_form_update.html" />
     <Content Include="organizer\templates\organizer\startup_detail.html" />
+    <Content Include="organizer\templates\organizer\startup_form_delete.html" />
+    <Content Include="organizer\templates\organizer\startup_form_update.html" />
+    <Content Include="organizer\templates\organizer\startup_form_create.html" />
     <Content Include="organizer\templates\organizer\startup_list.html" />
     <Content Include="organizer\templates\organizer\tag_detail.html" />
+    <Content Include="organizer\templates\organizer\newslink_form_create.html" />
+    <Content Include="organizer\templates\organizer\tag_form_delete.html" />
+    <Content Include="organizer\templates\organizer\tag_form_update.html" />
+    <Content Include="organizer\templates\organizer\tag_form_create.html" />
     <Content Include="organizer\templates\organizer\tag_list.html" />
     <Content Include="requirements.txt" />
     <Content Include="templates\base.html" />

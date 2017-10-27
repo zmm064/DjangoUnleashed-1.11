@@ -1,0 +1,18 @@
+﻿{% extends parent_template|default:"blog/base_blog.html" %}
+
+{% block title %}
+    {{ block.super }} - Create Blog Post
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div>
+            {# action应该可以为""吧, 毕竟提交表单和展示表单都是同一个url #}
+            <form action="{% url 'blog:post_form_create' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Create Blog Post</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,4 +1,4 @@
-﻿{% extends parent_template|default:"blog/base_blog.html" %}
+﻿{% extends parent_template|default:"blog/base_blog.html" %}{#post|form#}
 
 {% block title %}
     {{ block.super }} - {{ post.title|title }}
@@ -9,6 +9,9 @@
         <header>
             {#博客文章开头部分#}
             <h2>{{ post.title|title }}</h2>
+            <ul>
+                <li><a href="{{ post.get_update_url }}">Edit Post</a></li>
+            </ul>
             <p>
                 Written on <time datetime="{{ post.pub_date|date:"Y-m-d" }}">
                 {{ post.pub_date|date:"l, F j, Y"}}</time>
