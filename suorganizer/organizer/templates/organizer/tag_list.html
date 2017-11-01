@@ -9,7 +9,7 @@
     <ul>
         {% for tag in tag_list %}
             <li>
-                <a href="{{tag.get_absolute_url}}">{{ tag.name|title }}</a>
+                <a href="{{ tag.get_absolute_url }}">{{ tag.name|title }}</a>
                 <ul>
                     <li><a href="{{ tag.get_update_url }}">Edit Tag</a></li>
                 </ul>
@@ -18,4 +18,16 @@
             <li><em>There are currently no Tags available.</em></li>
         {% endfor %}
     </ul>
+    
+    {% if tag_list.has_other_pages %}
+        <ul>
+            {% if tag_list.has_previous %}
+                <li><a href="{{ previous_page_url }}">Previous</a></li>
+            {% endif %}
+            <li>Page {{ tag_list.number }} of {{ paginator.num_pages }}</li>
+            {% if tag_list.has_next %}
+                <li><a href="{{ next_page_url }}">Next</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
 {% endblock %}
