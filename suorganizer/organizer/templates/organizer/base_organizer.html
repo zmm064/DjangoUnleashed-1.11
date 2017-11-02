@@ -1,1 +1,6 @@
 ﻿{% extends parent_template|default:"base.html" %}
+
+{% load staticfiles %}
+{% block head %}
+    <link href="{% static 'organizer/style.css' %}" rel="stylesheet" />
+{% endblock %}
