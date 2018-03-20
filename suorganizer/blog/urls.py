@@ -8,7 +8,7 @@ urlpatterns = [
         r'(?P<month>\d{1,2})/'
         r'(?P<slug>[\w\-]+)/$', post_detail, name='post_detail'),
 
-    url(r'^create$/', PostCreate.as_view(), name='post_form_create'),
+    url(r'^create/$', PostCreate.as_view(), name='post_form_create'),
     url(r'^(?P<year>\d{4})/'
         r'(?P<month>\d{1,2})/'
         r'(?P<slug>[\w\-]+)/update/$', PostUpdate.as_view(), name='post_update'),

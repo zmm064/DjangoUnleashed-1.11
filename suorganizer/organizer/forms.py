@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 
 from .models import NewsLink, Startup, Tag
 
-
 class SlugCleanMixin:
     '''混入类用于添加clean_slug方法'''
     def clean_slug(self):

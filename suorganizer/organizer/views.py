@@ -1,24 +1,40 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import View
+from django.views.generic import View, CreateView, DetailView, DeleteView, UpdateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Startup, Tag, NewsLink
 from .forms import TagForm, StartupForm, NewsLinkForm
-from .utils import ObjectCreateMixin, ObjectUpdateMixin, ObjectDeleteMixin
+from .utils import ObjectUpdateMixin, ObjectDeleteMixin
 # Create your views here.
 
-def startup_detail(request, slug):
-    startup = get_object_or_404(Startup, slug__iexact=slug)
-    return render(request, 
-                  'organizer/startup_detail.html',
-                  {'startup': startup})
 
-def tag_detail(request, slug):
-    tag = get_object_or_404(Tag, slug__iexact=slug)
-    return render(request,
-                  'organizer/tag_detail.html',
-                  {'tag': tag})
+class StartupDetail(DetailView):
+    context_object_name = 'startup'
+    model               = Startup
+    template_name       = 'organizer/startup_detail.html'
+
+    #def get(self, request, slug):
+    #    startup = get_object_or_404(Startup, slug__iexact=slug)
+    #    return render(request, 
+    #                  'organizer/startup_detail.html',
+    #                  {'startup': startup})
+
+
+class TagDetail(DetailView):
+    context_object_name = 'tag'
+    model               = Tag
+    template_name       = 'organizer/tag_detail.html'
+
+    #def get(self, request, slug):
+    #    tag = get_object_or_404(Tag, slug__iexact=slug)
+    #    return render(request,
+    #                  'organizer/tag_detail.html',
+    #                  {'tag': tag})
+
+
+
+
 
 class TagList(View):
     template_name = 'organizer/tag_list.html'
@@ -78,22 +94,22 @@ class StartupList(View):
                        'next_page_url': next_url, 'previous_page_url': prev_url})
 
 
-class TagCreate(View, ObjectCreateMixin):
+class TagCreate(CreateView):
     form_class    = TagForm
     template_name = 'organizer/tag_form_create.html'
 
 
-class StartupCreate(View, ObjectCreateMixin):
+class StartupCreate(CreateView):
     form_class    = StartupForm
     template_name = 'organizer/startup_form_create.html'
 
 
-class NewsLinkCreate(View, ObjectCreateMixin):
+class NewsLinkCreate(CreateView):
     form_class    = NewsLinkForm
     template_name = 'organizer/startup_form_create.html'
 
 
-class NewsLinkUpdate(View, ObjectUpdateMixin):
+class NewsLinkUpdate(View):
     form_class    = NewsLinkForm
     template_name = 'organizer/newslink_form_update.html'
 
@@ -115,37 +131,41 @@ class NewsLinkUpdate(View, ObjectUpdateMixin):
                           {'form': bound_form, 'newslink': newslink})
 
 
-class TagUpdate(View, ObjectUpdateMixin):
+class TagUpdate(UpdateView):
     form_class    = TagForm
     model         = Tag
     template_name = 'organizer/tag_form_update.html'
 
 
-class StartupUpdate(View, ObjectUpdateMixin):
+class StartupUpdate(UpdateView):
     form_class    = StartupForm
     model         = Startup
     template_name = 'organizer/startup_form_update.html'
 
 
-class NewsLinkDelete(View):
-    def get(self, request, pk):
-        newslink = get_object_or_404(NewsLink, pk=pk)
-        return render(request, 'organizer/newslink_form_delete.html', {'newslink': newslink})
+class NewsLinkDelete(DeleteView):
+    model = NewsLink
 
-    def post(self, request, pk):
-        newslink = get_object_or_404(NewsLink, pk=pk)
-        startup = newslink.startup
-        newslink.delete()
-        return redirect(startup)
+    def get_success_url(self):
+        return self.object.startup.get_absolute_url()
+    #def get(self, request, pk):
+    #    newslink = get_object_or_404(NewsLink, pk=pk)
+    #    return render(request, 'organizer/newslink_form_delete.html', {'newslink': newslink})
+
+    #def post(self, request, pk):
+    #    newslink = get_object_or_404(NewsLink, pk=pk)
+    #    startup = newslink.startup
+    #    newslink.delete()
+    #    return redirect(startup)
 
 
-class TagDelete(View, ObjectDeleteMixin):
+class TagDelete(DeleteView):
     model         = Tag
     success_url   = reverse_lazy('organizer:tag_list')
     template_name = 'organizer/tag_form_delete.html'
 
 
-class StartupDelete(View, ObjectDeleteMixin):
+class StartupDelete(DeleteView):
     model         = Startup
     success_url   = reverse_lazy('organizer:startup_list')
     template_name = 'organizer/startup_form_delete.html'

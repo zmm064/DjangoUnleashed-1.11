@@ -7,7 +7,7 @@
 {% block content %}
     <div>
         <div>
-            <form action="{% url 'organizer:startup_create' %}" method="post">
+            <form action="{% url 'organizer:startup_form_create' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Create Startup</button>

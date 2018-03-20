@@ -6,12 +6,16 @@
 
 {% block content %}
     <h2>Tag List</h2>
+    <div>
+        <a href="{% url 'organizer:tag_form_create' %}">Create New Tag</a>
+    </div>
     <ul>
         {% for tag in tag_list %}
             <li>
                 <a href="{{ tag.get_absolute_url }}">{{ tag.name|title }}</a>
                 <ul>
                     <li><a href="{{ tag.get_update_url }}">Edit Tag</a></li>
+                    <li><a href="{{ tag.get_delete_url }}">Delete Tag</a></li>
                 </ul>
             </li>
         {% empty %}

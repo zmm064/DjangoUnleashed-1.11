@@ -6,6 +6,9 @@
 
 {% block content %}
     <h2>Startup List</h2>
+    <div>
+        <a href="{% url 'organizer:startup_form_create' %}">Create New Startup</a>
+    </div>
     <ul>
         {% for startup in startup_list %}
             <li>
@@ -19,13 +22,13 @@
             <li><em>No Startups Avaiable</em></li>
         {% endfor %}
     </ul>
-    {% if startup_list.has_other_pages() %}
+    {% if startup_list.has_other_pages %}
         <ul>
-            {% if startup_list.has_previous() %}
+            {% if startup_list.has_previous %}
                 <li><a href="{{ previous_page_url }}">Previous</a></li>
             {% endif %}
             <li>Page {{ startup_list.number }} of {{ paginator.num_pages }}</li>
-            {% if startup_list.has_next() %}
+            {% if startup_list.has_next %}
                 {#<li><a href="?page={{ startup_list.next_page_number }}">Next</a></li>#}
                 <li><a href="{{ next_page_url }}">Next</a></li>
             {% endif %}
