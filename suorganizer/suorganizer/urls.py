@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', RedirectView.as_view(pattern_name='blog:post_list',permanent=False)),
     url(r'blog/', include('blog.urls', namespace='blog', app_name='blog')),
+    url(r'^contact/', include('contact.urls')),
     url(r'^', include('organizer.urls', namespace='organizer', app_name='organizer')),
 ]

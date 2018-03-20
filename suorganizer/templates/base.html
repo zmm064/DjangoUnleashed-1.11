@@ -25,8 +25,27 @@
                 <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
                 <li><a href="{% url 'organizer:startup_list' %}">Startups</a></li>
                 <li><a href="{% url 'organizer:tag_list' %}">Tags</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
+
+        {% if messages %}
+        <div>
+          <div>
+            <ul>
+              {% for message in messages %}
+                {% if message.tags %}
+                  <li class="{{ message.tags }}">
+                {% else %}
+                  <li>
+                {% endif %}
+                {{ message }}</li>
+              {% endfor %}
+            </ul>
+           </div>
+        </div>
+        {% endif %}
+
         <main>
             {% block content %}
                 This is default content!
