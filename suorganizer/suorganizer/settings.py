@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.flatpages',
+    'django.contrib.sites',
     'blog',
     'organizer',
     'contact',
@@ -53,6 +55,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'suorganizer.urls'
@@ -133,3 +136,6 @@ SERVER_EMAIL         = 'contact@django-unleashed.com' # 内部邮件
 DEFAULT_FROM_EMAIL   = '1542904808@qq.com' # 常规商业邮件
 EMAIL_SUBJECT_PREFIX = '[Startup Organizer] ' # 邮件主题前缀
 MANAGERS             = (('Us', '1542904808@qq.com'), )
+
+SITE_ID = 1
+

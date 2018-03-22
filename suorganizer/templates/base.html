@@ -1,4 +1,8 @@
 ﻿{% load staticfiles %}
+{% load flatpages %}
+{# We can call get_flatpages and set all of the #} 
+{# FlatPage objects as the flatpages variable #}
+{% get_flatpages as flatpages %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -26,6 +30,10 @@
                 <li><a href="{% url 'organizer:startup_list' %}">Startups</a></li>
                 <li><a href="{% url 'organizer:tag_list' %}">Tags</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
+                {% for each in flatpages %}
+                    <li><a href="{{ each.get_absolute_url }}">{{ each.title }}</a></li>
+                {% endfor %}
+
             </ul>
         </nav>
 
