@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+<div class="row">
+    <div class="eight columns">
     <div>
         <a href="{% url 'blog:post_form_create' %}">Write New Blog Post</a>
     </div>
@@ -29,4 +31,16 @@
     {% empty %}
         <p><em>No Blog Posts Available</em></p>
     {% endfor %}
+    </div>
+    <div class="desktop four columns">
+      <a href="{% url 'blog:post_form_create' %}" class="button button-primary"> Write New Blog Post</a>
+      <h3>Post Archives</h3>
+      <ul>
+        {% for y in date_list %}
+          <li><a href="{% url 'blog:post_archive_year' y|date:"Y" %}">
+            {{ y|date:"Y" }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% endblock %}
