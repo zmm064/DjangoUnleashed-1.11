@@ -20,6 +20,19 @@
 </head>
 <body>
     <div class="container">
+
+        <div class="status row">
+        <div class="offset-by-eight four columns">
+          <ul class="inline">
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'dj-auth:logout' %}?next={{ request.path }}">Log Out</a></li>
+            {% else %}
+              <li><a href="{% url 'dj-auth:login' %}?next={{ request.path }}">Log In</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        </div>
+
         <header class="row">
             <img src="{% static 'site/logo.png' %}" alt="Site Logo" />
             <h1 class="logo">Startup Organizer</h1>

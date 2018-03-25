@@ -4,7 +4,8 @@ Definition of urls for suorganizer.
 
 from django.conf.urls import include, url
 from django.views.generic import RedirectView
-from django.contrib import admin
+from django.contrib import admin, auth
+from django.contrib.auth import urls as auth_urls
 from django.contrib.flatpages import urls as flatpages_urls
 from .views import redirect_root
 # admin.autodiscover()
@@ -20,6 +21,7 @@ urlpatterns = [
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^user/', include('user.urls', app_name='user', namespace='dj-auth')),
     url(r'^$', RedirectView.as_view(pattern_name='blog:post_list',permanent=False)),
     url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
     url(r'^contact/', include('contact.urls')),

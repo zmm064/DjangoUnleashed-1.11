@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import posixpath
+from django.core.urlresolvers import reverse_lazy
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'django.contrib.sites',
     'blog',
+    'user',
     'organizer',
     'contact',
 ]
@@ -139,3 +142,43 @@ MANAGERS             = (('Us', '1542904808@qq.com'), )
 
 SITE_ID = 1
 
+LOGIN_REDIRECT_URL = reverse_lazy('blog:post_list')
+LOGIN_URL = reverse_lazy('dj-auth:login')
+LOGOUT_URL = reverse_lazy('dj-auth:logout')
+
+# Logging
+# https://docs.djangoproject.com/en/1.8/topics/logging/
+
+#verbose = "[%(asctime)s] %(levelname)s[%(name)s:%(lineno)s] %(message)s"
+#from .log_filters import ManagementFilter
+
+#LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': False,
+#    # create a handler called 'console' that uses Python’s StreamHandler class
+#    'filters': {
+#        'remove_migration_sql': {
+#            '()': ManagementFilter,
+#        },
+#    },
+#    'handlers': { 
+#        'console': {
+#            'filters': ['remove_migration_sql'],
+#            'class': 'logging.StreamHandler',
+#        },
+#    },
+#    # calling the format verbose
+#    'formatters': {
+#        'verbose': {
+#            'format': "[%(asctime)s] %(levelname)s[%(name)s:%(lineno)s] %(message)s",
+#            'datefmt': "%Y-%b-%d %H:%M:%S"
+#        },
+#    },
+#    'loggers': {
+#        'django': {
+#            'handlers': ['console'],
+#            'level': 'DEBUG',
+#            'formatter': 'verbose'
+#        },
+#    },
+#}
