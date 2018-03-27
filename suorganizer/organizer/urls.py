@@ -1,4 +1,6 @@
 from django.conf.urls import url
+
+
 from .views import (StartupDetail, StartupList, 
                     TagDetail, TagList, TagPageList,
                     TagCreate, StartupCreate, NewsLinkCreate,

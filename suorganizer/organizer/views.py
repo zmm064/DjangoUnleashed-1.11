@@ -3,6 +3,8 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import View, CreateView, DetailView, DeleteView, UpdateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from user.decorators import class_login_required, require_authenticated_permission
+
 from .models import Startup, Tag, NewsLink
 from .forms import TagForm, StartupForm, NewsLinkForm
 from .utils import ObjectUpdateMixin, ObjectDeleteMixin
@@ -94,6 +96,7 @@ class StartupList(View):
                        'next_page_url': next_url, 'previous_page_url': prev_url})
 
 
+@require_authenticated_permission('organizer.add_tag')
 class TagCreate(CreateView):
     form_class    = TagForm
     template_name = 'organizer/tag_form_create.html'
@@ -130,13 +133,14 @@ class NewsLinkUpdate(View):
                           self.template_name,
                           {'form': bound_form, 'newslink': newslink})
 
-
+@require_authenticated_permission('organizer.change_tag')
 class TagUpdate(UpdateView):
     form_class    = TagForm
     model         = Tag
     template_name = 'organizer/tag_form_update.html'
 
 
+@require_authenticated_permission('organizer.change_startup')
 class StartupUpdate(UpdateView):
     form_class    = StartupForm
     model         = Startup

@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth.models import Group
 from organizer.models import Startup, Tag
 
 
@@ -20,6 +20,9 @@ class Post(models.Model):
         verbose_name  = 'blog post'
         ordering      = ['-pub_date', 'title']
         get_latest_by = 'pub_date'
+        permissions = [
+            ("view_future_post", "Can view unpublished Post"),
+        ]
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', 

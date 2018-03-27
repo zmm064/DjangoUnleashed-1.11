@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_http_methods
 from django.views.generic import View, CreateView, ListView, YearArchiveView, MonthArchiveView, ArchiveIndexView
 
-# Create your views here.
+from user.decorators import require_authenticated_permission
+
 from .models import Post
 from .forms import PostForm
+from .utils import AllowFuturePermissionMixin
 
 @require_http_methods(['HEAD', 'GET'])
 def post_detail(request, year, month, slug):
@@ -21,9 +23,9 @@ def post_detail(request, year, month, slug):
     #    return render(request, 
     #                  'blog/post_list.html',
     #                  {'post_list': Post.objects.all()})
-class PostList(ArchiveIndexView):
+class PostList(AllowFuturePermissionMixin, ArchiveIndexView):
     allow_empty = True
-    allow_future = True
+    #allow_future = True 默认为False
     context_object_name = 'post_list'
     date_field = 'pub_date'
     make_object_list = True
@@ -32,6 +34,7 @@ class PostList(ArchiveIndexView):
     template_name = 'blog/post_list.html'
 
 
+@require_authenticated_permission('blog.add_post')
 class PostCreate(CreateView):
     form_class = PostForm
     template_name = 'blog/post_form_create.html'

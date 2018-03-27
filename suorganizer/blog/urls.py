@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.contrib.auth.decorators import login_required
 from .views import PostList, post_detail, PostCreate, PostUpdate, PostDelete, PostArchiveYear, PostArchiveMonth
 
 

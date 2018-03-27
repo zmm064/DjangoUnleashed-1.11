@@ -41,6 +41,7 @@
     <Compile Include="blog\urls.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="blog\utils.py" />
     <Compile Include="blog\views.py" />
     <Compile Include="blog\__init__.py" />
     <Compile Include="contact\apps.py" />
@@ -83,6 +84,9 @@
     <Compile Include="suorganizer\wsgi.py" />
     <Compile Include="user\admin.py" />
     <Compile Include="user\apps.py" />
+    <Compile Include="user\decorators.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="user\migrations\__init__.py" />
     <Compile Include="user\models.py" />
     <Compile Include="user\tests.py" />
@@ -187,6 +191,8 @@
     <Content Include="static\site\style.css" />
     <Content Include="templates\base.html" />
     <Content Include="templates\flatpages\default.html" />
+    <Content Include="user\templates\user\password_change_form.html" />
+    <Content Include="user\templates\user\password_change_done.html" />
     <Content Include="user\templates\user\logged_out.html" />
     <Content Include="user\templates\user\login_form.html" />
     <Content Include="user\templates\user\login.html" />
