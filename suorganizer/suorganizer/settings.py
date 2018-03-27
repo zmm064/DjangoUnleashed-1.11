@@ -135,7 +135,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 
 EMAIL_BACKEND        = 'django.core.mail.backends.console.EmailBackend'
-SERVER_EMAIL         = 'contact@django-unleashed.com' # 内部邮件
+SERVER_EMAIL         = 'zmm064@foxmail.com' # 内部邮件
 DEFAULT_FROM_EMAIL   = '1542904808@qq.com' # 常规商业邮件
 EMAIL_SUBJECT_PREFIX = '[Startup Organizer] ' # 邮件主题前缀
 MANAGERS             = (('Us', '1542904808@qq.com'), )

@@ -191,12 +191,18 @@
     <Content Include="static\site\style.css" />
     <Content Include="templates\base.html" />
     <Content Include="templates\flatpages\default.html" />
+    <Content Include="user\templates\user\password_reset_confirm.html" />
+    <Content Include="user\templates\user\password_reset_complete.html" />
+    <Content Include="user\templates\user\password_reset_sent.html" />
+    <Content Include="user\templates\user\password_reset_form.html" />
     <Content Include="user\templates\user\password_change_form.html" />
     <Content Include="user\templates\user\password_change_done.html" />
     <Content Include="user\templates\user\logged_out.html" />
     <Content Include="user\templates\user\login_form.html" />
     <Content Include="user\templates\user\login.html" />
     <Content Include="user\templates\user\base_user.html" />
+    <Content Include="user\templates\user\password_reset_email.txt" />
+    <Content Include="user\templates\user\password_reset_subject.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="blog\" />
