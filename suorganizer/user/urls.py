@@ -1,8 +1,10 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import AuthenticationForm
-from django.views.generic import RedirectView
 from django.core.urlresolvers import reverse_lazy
+from django.views.generic import RedirectView, TemplateView
+
+from .views import DisableAccount, ActivateAccount, CreateAccount
 
 '''
 url(r'^password/', include(password_urls)),
@@ -45,7 +47,13 @@ password_urls = [
         # To immediately allow them to log in
          'extra_context': {'form': AuthenticationForm}},
         name='pw_reset_complete'),
+     url(r'^$', RedirectView.as_view(pattern_name='dj-auth:pw_reset_start', permanent=False)),
 ]
+
+
+
+
+
 
 urlpatterns = [
     url(r'^login/$', auth_views.login, {
@@ -59,4 +67,12 @@ urlpatterns = [
             }, name='logout'),
     url(r'^$', RedirectView.as_view(pattern_name='dj-auth:login', permanent=False)),
     url(r'^password/', include(password_urls)),
+    url(r'^disable/$',DisableAccount.as_view(),name='disable'),
+    url(r'^create/$',CreateAccount.as_view(),name='create'),
+    url(r'^create/done/$',TemplateView.as_view(template_name='user/user_create_done.html'),name='create_done'),
+    url(r'^activate/'
+        r'(?P<uidb64>[0-9A-Za-z_\-]+)/'
+        r'(?P<token>[0-9A-Za-z]{1,13}'
+        r'-[0-9A-Za-z]{1,20})/$',ActivateAccount.as_view(),name='activate'),
+
 ]

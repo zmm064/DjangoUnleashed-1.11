@@ -1,6 +1,6 @@
 from logging import Filter
 from pprint import pprint
-from django.contrib.auth import views
+
 
 class ManagementFilter(Filter):
     #Luckily, all of the SQL output is created by a function called execute(), 

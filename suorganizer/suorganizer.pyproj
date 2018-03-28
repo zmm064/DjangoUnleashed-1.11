@@ -83,6 +83,10 @@
     <Compile Include="suorganizer\urls.py" />
     <Compile Include="suorganizer\wsgi.py" />
     <Compile Include="user\admin.py" />
+    <Compile Include="user\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="user\utils.py" />
     <Compile Include="user\apps.py" />
     <Compile Include="user\decorators.py">
       <SubType>Code</SubType>
@@ -191,6 +195,12 @@
     <Content Include="static\site\style.css" />
     <Content Include="templates\base.html" />
     <Content Include="templates\flatpages\default.html" />
+    <Content Include="user\templates\user\email_create.txt" />
+    <Content Include="user\templates\user\subject_create.txt" />
+    <Content Include="user\templates\user\user_activate.html" />
+    <Content Include="user\templates\user\user_create_done.html" />
+    <Content Include="user\templates\user\user_create.html" />
+    <Content Include="user\templates\user\user_confirm_delete.html" />
     <Content Include="user\templates\user\password_reset_confirm.html" />
     <Content Include="user\templates\user\password_reset_complete.html" />
     <Content Include="user\templates\user\password_reset_sent.html" />
