@@ -2,7 +2,7 @@ from datetime import date
 
 from django.db import models
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth.models import User
 
 class Tag(models.Model):
     name = models.CharField(max_length=31, unique=True)

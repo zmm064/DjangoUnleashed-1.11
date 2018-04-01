@@ -196,6 +196,7 @@
     <Content Include="templates\base.html" />
     <Content Include="templates\flatpages\default.html" />
     <Content Include="user\templates\user\email_create.txt" />
+    <Content Include="user\templates\user\profile_form_update.html" />
     <Content Include="user\templates\user\subject_create.txt" />
     <Content Include="user\templates\user\user_activate.html" />
     <Content Include="user\templates\user\user_create_done.html" />

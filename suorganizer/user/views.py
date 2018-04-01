@@ -7,15 +7,17 @@ from django.utils.decorators import method_decorator
 from django.contrib.messages import error, success
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.cache import never_cache
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
 from django.views.decorators.debug import sensitive_post_parameters
 
 from .forms import UserCreationForm
-from .utils import MailContextViewMixin
-
+from .utils import MailContextViewMixin, ProfileGetObjectMixin
+from .decorators import class_login_required
+from .models import Profile
+from core.utils import UpdateView
 
 
 class DisableAccount(View):
@@ -91,3 +93,18 @@ class ActivateAccount(View):
             return redirect(self.success_url)
         else:
             return TemplateResponse(request, self.template_name)
+
+@class_login_required
+class ProfileDetail(ProfileGetObjectMixin, DetailView):
+    model = Profile
+
+
+class PublicProfileDetail(DetailView):
+    model = Profile
+
+
+@class_login_required
+class ProfileUpdate(ProfileGetObjectMixin, UpdateView):
+    # The view will generate a form for us using ModelForm inheritance
+    fields = ('about',)
+    model = Profile
